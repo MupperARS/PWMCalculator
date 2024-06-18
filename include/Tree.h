@@ -111,8 +111,8 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
             {
                 addTree = new TreeList;
                 addTree->Data = addData;
-                treelist->Left = nullptr;
-                treelist->Right = nullptr;
+                addTree->Left = nullptr;
+                addTree->Right = nullptr;
                 Tree->Left = addTree;
                 std::cout<<"写入完成\n";
                 return;
@@ -126,8 +126,8 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
             {
                 addTree = new TreeList;
                 addTree->Data = addData;
-                treelist->Left = nullptr;
-                treelist->Right = nullptr;
+                addTree->Left = nullptr;
+                addTree->Right = nullptr;
                 Tree->Right = addTree;
                 std::cout<<"写入完成\n";
                 return;
@@ -162,7 +162,6 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData[])
 template<class T>
 void BinarySearchTree<T>::dropTree(TreeList *Tree, T dropData, TreeList *preTree)
 {
-    TreeList *addTree;
     //判断树是否为空
     if(Tree != NULL)
     {
@@ -186,7 +185,7 @@ void BinarySearchTree<T>::dropTree(TreeList *Tree, T dropData, TreeList *preTree
 template<class T>
 BinarySearchTree<T>::~BinarySearchTree()
 {
-    delete tree
+    delete tree;
 }
 
 #endif
