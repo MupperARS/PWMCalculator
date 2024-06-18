@@ -99,7 +99,7 @@ int main()
         if (!value != 0) std::cout << "欢迎使用搜索二叉数实例" << std::endl;
         std::cin >> input;
         value = Select(input);
-        Menu();
+        if(value != 0) Menu();
     } while (value);
     searchTree.ListTree(searchTree.tree);
 
