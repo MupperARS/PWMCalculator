@@ -92,6 +92,7 @@ boolean Select()
         case 4:
             /* code */
             list();
+            std::cout << "\n";
             Menu();
             return 1;
         default:
@@ -107,12 +108,12 @@ void Menu()
     int value = 0;
     do
     {
-        std::cout << "************" << std::endl;
-        std::cout << "************" << std::endl;
-        std::cout << "************" << std::endl;
-        std::cout << "************" << std::endl;
-        std::cout << "************" << std::endl;
-        std::cout << "*****exit 退出****" << std::endl;
+        std::cout << "****** Select ******" << std::endl;
+        std::cout << "******* add ********" << std::endl;
+        std::cout << "******* drop *******" << std::endl;
+        std::cout << "******* list *******" << std::endl;
+        std::cout << "******* help *******" << std::endl;
+        std::cout << "***** exit 退出 ******" << std::endl;
 
         value = Select();
     } while (value && value != 1);
@@ -120,9 +121,8 @@ void Menu()
         std::cout << "拜拜" << std::endl;
 }
 
-int main()
+void start()
 {
-    std::cout << "hello word\n";
     int value = 0;
     if (!value != 0)
         std::cout << "欢迎使用搜索二叉数实例" << std::endl;
@@ -132,5 +132,11 @@ int main()
 
     if (value < 1)
         std::cout << "拜拜" << std::endl;
+}
+
+int main()
+{
+    std::cout << "hello word\n";
+    start();
     return 0;
 }

@@ -15,6 +15,9 @@ class BinarySearchTree
 
 private:
     /* data */
+    //声明根节点
+    int count;
+
     /**
     * 定义二叉树结构
     * @param Data 泛型数据
@@ -46,6 +49,7 @@ public:
 template<class T>
 BinarySearchTree<T>::BinarySearchTree(T Data)
 {
+    count = 1;
     tree = (TreeList *) malloc(sizeof(TreeList));
     tree->Data = Data;
     tree->Left = nullptr;
@@ -82,18 +86,26 @@ void BinarySearchTree<T>::ListTree(TreeList *Tree)
 template<class T>
 size_t BinarySearchTree<T>::FindTreeNumber(TreeList *Tree, T FindData )
 {
-    //根节点为1
-    int count = 1;
     // 判断树是否为空
     if(Tree != NULL)
     {
-        if(FindData < Tree->Data) count += FindTreeNumber(Tree->Left);
-        else if (FindData > Tree->Data) count += FindTreeNumber(Tree->Right);
-        else return count;
+        if(FindData < Tree->Data)
+        {
+            count++
+            FindTreeNumber(Tree->Left);
+        }
+        
+        else if (FindData > Tree->Data)
+        {
+            count++
+            FindTreeNumber(Tree->Right);
+        }
     }
+    return count;
 }
 
 /**
+ * @brief 核心: 增加节点
  * @param Tree 树节点
  * @param addData 要添加的数据
  */
@@ -155,7 +167,7 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData[])
 
 
 /**
- * @brief 核心：递归算法
+ * @brief 核心：递归算法 删除数节点
  * @param Tree 树节点
  * @param dropData 要删除的数据
  * @param preTree  之前的数节点
