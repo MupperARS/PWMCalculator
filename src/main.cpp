@@ -112,8 +112,8 @@ void Menu()
         std::cout << "******* add ********" << std::endl;
         std::cout << "******* drop *******" << std::endl;
         std::cout << "******* list *******" << std::endl;
-        std::cout << "******* help *******" << std::endl;
-        std::cout << "***** exit 退出 ******" << std::endl;
+        std::cout << "******  help帮助  ******" << std::endl;
+        std::cout << "*****  exit 退出  ******" << std::endl;
 
         value = Select();
     } while (value && value != 1);
