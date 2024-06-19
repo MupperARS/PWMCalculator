@@ -38,6 +38,11 @@ int Result(std::string &input)
         return -1;
 }
 
+/**
+ * @brief 添加函数
+ * @param NULL
+ * @return void
+ */
 void add()
 {
     int addvalue = 0;
@@ -46,6 +51,11 @@ void add()
     searchTree.AddTree(searchTree.tree, addvalue);
 }
 
+/**
+ * @brief 删除函数
+ * @param NULL
+ * @return void
+ */
 void drop()
 {
     int dropvalue = 0;
@@ -54,6 +64,11 @@ void drop()
     searchTree.dropTree(searchTree.tree, dropvalue, NULL);
 }
 
+/**
+ * @brief 遍历函数
+ * @param NULL
+ * @return void
+ */
 void list()
 {
     searchTree.ListTree(searchTree.tree);
@@ -95,6 +110,8 @@ boolean Select()
             std::cout << "\n";
             Menu();
             return 1;
+        case 5:
+            
         default:
             break;
         }
@@ -125,7 +142,7 @@ void start()
 {
     int value = 0;
     if (!value != 0)
-        std::cout << "欢迎使用搜索二叉数实例" << std::endl;
+        std::cout << "欢迎使用搜索二叉树实例" << std::endl;
     value = Select();
     if (value == 1)
         Menu();
@@ -136,7 +153,6 @@ void start()
 
 int main()
 {
-    std::cout << "hello word\n";
     start();
     return 0;
 }
