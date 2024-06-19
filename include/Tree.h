@@ -63,18 +63,15 @@ void BinarySearchTree<T>::ListTree(TreeList *Tree)
     //判断树是否为空
     if(Tree != NULL)
     {
-        std::cout << "有节点" << std::endl;
+        //std::cout << "有节点" << std::endl;
         //Left
         ListTree(Tree->Left);
         //Data
-        std::cout << Tree->Data;
+        std::cout << Tree->Data << " ";
         //Right
         ListTree(Tree->Right);
-
-        std::cout << "\n";
     }
-
-    else std::cout << "节点为空";
+    //else std::cout << "节点为空";
 }
 
 /**

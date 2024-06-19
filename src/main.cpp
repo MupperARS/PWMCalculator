@@ -116,7 +116,8 @@ void Menu()
 
         value = Select();
     } while (value && value != 1);
-    if(value < 1) std::cout << "拜拜" << std::endl;
+    if (value < 1)
+        std::cout << "拜拜" << std::endl;
 }
 
 int main()
@@ -128,6 +129,8 @@ int main()
     value = Select();
     if (value == 1)
         Menu();
-    if (value < 1) std::cout << "拜拜" << std::endl;
+
+    if (value < 1)
+        std::cout << "拜拜" << std::endl;
     return 0;
 }
