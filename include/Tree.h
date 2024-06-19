@@ -38,7 +38,11 @@ public:
     ~BinarySearchTree();
 };
 
-
+/**
+ * @brief 构造函数:结构体初始化
+ * @param Data 初始数据
+ * @return object
+ */
 template<class T>
 BinarySearchTree<T>::BinarySearchTree(T Data)
 {
