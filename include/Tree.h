@@ -91,14 +91,14 @@ size_t BinarySearchTree<T>::FindTreeNumber(TreeList *Tree, T FindData )
     {
         if(FindData < Tree->Data)
         {
-            count++
-            FindTreeNumber(Tree->Left);
+            count++;
+            FindTreeNumber(Tree->Left, FindData);
         }
         
         else if (FindData > Tree->Data)
         {
-            count++
-            FindTreeNumber(Tree->Right);
+            count++;
+            FindTreeNumber(Tree->Right, FindData);
         }
     }
     return count;
@@ -181,8 +181,11 @@ void BinarySearchTree<T>::dropTree(TreeList *Tree, T dropData, TreeList *preTree
         //判断节点数据与删除数据是否相同
         if (Tree->Data = dropData)
         {
-            preTree->Right = Tree->Right;
-            preTree->Right->Left = Tree->Left;
+            if(preTree != NULL)
+            {
+                preTree->Right = Tree->Right;
+                preTree->Right->Left = Tree->Left;
+            }
             delete Tree;
             return;
         }

@@ -32,7 +32,7 @@ int Result(std::string &input)
         return 3;
     if (!input.compare("list"))
         return 4;
-    if (!input.compare("lenth"))
+    if (!input.compare("find"))
         return 5;
     else
         return -1;
@@ -74,6 +74,16 @@ void list()
     searchTree.ListTree(searchTree.tree);
 }
 
+void FindDatalenth()
+{
+    int Findvalue = 0;
+    std::cout << "请输入要查询的数据\n(Tree):";
+    std::cin >> Findvalue;
+    size_t len = searchTree.FindTreeNumber(searchTree.tree, Findvalue);
+    std::cout << Findvalue << "在" << len << "中\n";
+    //system("pause");
+}
+
 /**
  * @brief 选择回调函数
  * @param input 要输入的字符
@@ -111,7 +121,9 @@ boolean Select()
             Menu();
             return 1;
         case 5:
-            
+            FindDatalenth();
+            Menu();
+            return 1;
         default:
             break;
         }
@@ -127,8 +139,9 @@ void Menu()
     {
         std::cout << "****** Select ******" << std::endl;
         std::cout << "******* add ********" << std::endl;
-        std::cout << "******* drop *******" << std::endl;
-        std::cout << "******* list *******" << std::endl;
+        std::cout << "*******  drop 删除 ******" << std::endl;
+        std::cout << "***** list遍历展示 ******" << std::endl;
+        std::cout << "********* find *********" << std::endl;
         std::cout << "******  help帮助  ******" << std::endl;
         std::cout << "*****  exit 退出  ******" << std::endl;
 
