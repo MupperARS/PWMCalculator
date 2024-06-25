@@ -30,15 +30,18 @@ private:
         Rtree *Right;
     }TreeList;
 
+    void searchTreeadd(TreeList *Tree, T addData);
+    void searchTreeadd(TreeList *Tree, T addData[]);
+
 public:
     TreeList *tree;
     void ListTree(TreeList *Tree);
-    void AddTree(TreeList *Tree, T addData);
-    void AddTree(TreeList *Tree, T addData[]);
+    void addTree(TreeList *Tree, T addData);
     void dropTree(TreeList *Tree, T dropData, TreeList *preTree);
     size_t FindTreeNumber(TreeList *Tree,T FindData);
     BinarySearchTree(T Data);
     ~BinarySearchTree();
+
 };
 
 /**
@@ -78,6 +81,20 @@ void BinarySearchTree<T>::ListTree(TreeList *Tree)
     //else std::cout << "节点为空";
 }
 
+template <class T>
+inline void BinarySearchTree<T>::addTree(TreeList *Tree, T addData)
+{
+    if (Tree != nullptr)
+    {
+        searchTreeadd(Tree, addData);
+        std::cout << "写入成功\n";
+    }
+    else 
+    {
+        std::cout << "树为空,无法写入\n";
+    }
+}
+
 /**
  * 递归算法
  * @param FindData 要找的数据
@@ -110,23 +127,23 @@ size_t BinarySearchTree<T>::FindTreeNumber(TreeList *Tree, T FindData )
  * @param addData 要添加的数据
  */
 template<class T>
-void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
+void BinarySearchTree<T>::searchTreeadd(TreeList *Tree, T addData)
 {
-    TreeList *addTree;
+    TreeList *searchTreeadd;
     //判断树是否为空
     if(Tree != NULL)
     {
         if(addData < Tree->Data)
         {
             //如果T->Left为空，则就将添加的值写入到该指针地址下的Data上,如果该节点有值则转到下一节点上直到找到空节点
-            if(Tree->Left != NULL) AddTree(Tree->Left, addData);
+            if(Tree->Left != NULL) searchTreeadd(Tree->Left, addData);
             else
             {
-                addTree = new TreeList;
-                addTree->Data = addData;
-                addTree->Left = nullptr;
-                addTree->Right = nullptr;
-                Tree->Left = addTree;
+                searchTreeadd = new TreeList;
+                searchTreeadd->Data = addData;
+                searchTreeadd->Left = nullptr;
+                searchTreeadd->Right = nullptr;
+                Tree->Left = searchTreeadd;
                 std::cout<<"写入完成\n";
                 return;
             }
@@ -134,14 +151,14 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
         else if (addData > Tree->Data)
         {
             //如果T->Right为空，则就将添加的值写入到该指针地址下的Data上,如果该节点有值则转到下一节点上直到找到空节点
-            if(Tree->Right != NULL) AddTree(Tree->Right, addData);
+            if(Tree->Right != NULL) searchTreeadd(Tree->Right, addData);
             else
             {
-                addTree = new TreeList;
-                addTree->Data = addData;
-                addTree->Left = nullptr;
-                addTree->Right = nullptr;
-                Tree->Right = addTree;
+                searchTreeadd = new TreeList;
+                searchTreeadd->Data = addData;
+                searchTreeadd->Left = nullptr;
+                searchTreeadd->Right = nullptr;
+                Tree->Right = searchTreeadd;
                 std::cout<<"写入完成\n";
                 return;
             }
@@ -154,13 +171,13 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
 }
 
 template<class T>
-void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData[])
+void BinarySearchTree<T>::searchTreeadd(TreeList *Tree, T addData[])
 {
     int count = 0;
     while (addData[count] != 0)
     {
         T tmp = addData[count];
-        AddTree(Tree, tmp);
+        searchTreeadd(Tree, tmp);
     }
     
 }
