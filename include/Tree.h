@@ -17,6 +17,8 @@ private:
     /* data */
     //声明根节点
     int count;
+    int failCount;
+    int sucessCount;
 
     /**
     * 定义二叉树结构
@@ -30,6 +32,23 @@ private:
         Rtree *Right;
     }TreeList;
 
+    
+    void callBackmean()
+    {
+        int result = (failCount + sucessCount) / 2;
+        std::cout << "平均数为" << result << "\n";
+        failCount = 0;
+        sucessCount = 0
+    }
+
+    void setfailCount()
+    {
+        failCount++;
+    }
+    void setfailCount()
+    {
+        sucessCount++;
+    }
     void searchTreeadd(TreeList *Tree, T addData);
     void searchTreeadd(TreeList *Tree, T addData[]);
 
@@ -53,6 +72,8 @@ template<class T>
 BinarySearchTree<T>::BinarySearchTree(T Data)
 {
     count = 1;
+    sucessCount = 0;
+    failCount = 0
     tree = (TreeList *) malloc(sizeof(TreeList));
     tree->Data = Data;
     tree->Left = nullptr;
@@ -129,7 +150,7 @@ size_t BinarySearchTree<T>::FindTreeNumber(TreeList *Tree, T FindData )
 template<class T>
 void BinarySearchTree<T>::searchTreeadd(TreeList *Tree, T addData)
 {
-    TreeList *searchTreeadd;
+    TreeList *addTree;
     //判断树是否为空
     if(Tree != NULL)
     {
@@ -139,11 +160,11 @@ void BinarySearchTree<T>::searchTreeadd(TreeList *Tree, T addData)
             if(Tree->Left != NULL) searchTreeadd(Tree->Left, addData);
             else
             {
-                searchTreeadd = new TreeList;
-                searchTreeadd->Data = addData;
-                searchTreeadd->Left = nullptr;
-                searchTreeadd->Right = nullptr;
-                Tree->Left = searchTreeadd;
+                addTree = new TreeList;
+                addTree->Data = addData;
+                addTree->Left = nullptr;
+                addTree->Right = nullptr;
+                Tree->Left = addTree;
                 std::cout<<"写入完成\n";
                 return;
             }
@@ -154,11 +175,11 @@ void BinarySearchTree<T>::searchTreeadd(TreeList *Tree, T addData)
             if(Tree->Right != NULL) searchTreeadd(Tree->Right, addData);
             else
             {
-                searchTreeadd = new TreeList;
-                searchTreeadd->Data = addData;
-                searchTreeadd->Left = nullptr;
-                searchTreeadd->Right = nullptr;
-                Tree->Right = searchTreeadd;
+                addTree = new TreeList;
+                addTree->Data = addData;
+                addTree->Left = nullptr;
+                addTree->Right = nullptr;
+                Tree->Right = addTree;
                 std::cout<<"写入完成\n";
                 return;
             }
