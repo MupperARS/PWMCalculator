@@ -48,7 +48,7 @@ void add()
     int addvalue = 0;
     std::cout << "请输入要添加的数据\n(Tree):";
     std::cin >> addvalue;
-    searchTree.AddTree(searchTree.tree, addvalue);
+    searchTree.addTree(searchTree.tree, addvalue);
 }
 
 /**

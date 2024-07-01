@@ -17,7 +17,12 @@ private:
     /* data */
     //声明根节点
     int count;
+<<<<<<< HEAD
     int errorCount;
+=======
+    int failCount;
+    int sucessCount;
+>>>>>>> 81230a40ccae21424af1ace11bc148fa2e2bb021
 
     /**
     * 定义二叉树结构
@@ -31,15 +36,35 @@ private:
         Rtree *Right;
     }TreeList;
 
+    
+    void callBackmean()
+    {
+        int result = (failCount + sucessCount) / 2;
+        std::cout << "平均数为" << result << "\n";
+        failCount = 0;
+        sucessCount = 0
+    }
+
+    void setfailCount()
+    {
+        failCount++;
+    }
+    void setfailCount()
+    {
+        sucessCount++;
+    }
+    void searchTreeadd(TreeList *Tree, T addData);
+    void searchTreeadd(TreeList *Tree, T addData[]);
+
 public:
     TreeList *tree;
     void ListTree(TreeList *Tree);
-    void AddTree(TreeList *Tree, T addData);
-    void AddTree(TreeList *Tree, T addData[]);
+    void addTree(TreeList *Tree, T addData);
     void dropTree(TreeList *Tree, T dropData, TreeList *preTree);
     size_t FindTreeNumber(TreeList *Tree,T FindData);
     BinarySearchTree(T Data);
     ~BinarySearchTree();
+
 };
 
 /**
@@ -51,7 +76,12 @@ template<class T>
 BinarySearchTree<T>::BinarySearchTree(T Data)
 {
     count = 1;
+<<<<<<< HEAD
     errorCount = 0;
+=======
+    sucessCount = 0;
+    failCount = 0
+>>>>>>> 81230a40ccae21424af1ace11bc148fa2e2bb021
     tree = (TreeList *) malloc(sizeof(TreeList));
     tree->Data = Data;
     tree->Left = nullptr;
@@ -78,6 +108,20 @@ void BinarySearchTree<T>::ListTree(TreeList *Tree)
         ListTree(Tree->Right);
     }
     //else std::cout << "节点为空";
+}
+
+template <class T>
+inline void BinarySearchTree<T>::addTree(TreeList *Tree, T addData)
+{
+    if (Tree != nullptr)
+    {
+        searchTreeadd(Tree, addData);
+        std::cout << "写入成功\n";
+    }
+    else 
+    {
+        std::cout << "树为空,无法写入\n";
+    }
 }
 
 /**
@@ -112,7 +156,7 @@ size_t BinarySearchTree<T>::FindTreeNumber(TreeList *Tree, T FindData )
  * @param addData 要添加的数据
  */
 template<class T>
-void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
+void BinarySearchTree<T>::searchTreeadd(TreeList *Tree, T addData)
 {
     TreeList *addTree;
     //判断树是否为空
@@ -121,7 +165,7 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
         if(addData < Tree->Data)
         {
             //如果T->Left为空，则就将添加的值写入到该指针地址下的Data上,如果该节点有值则转到下一节点上直到找到空节点
-            if(Tree->Left != NULL) AddTree(Tree->Left, addData);
+            if(Tree->Left != NULL) searchTreeadd(Tree->Left, addData);
             else
             {
                 addTree = new TreeList;
@@ -136,7 +180,7 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
         else if (addData > Tree->Data)
         {
             //如果T->Right为空，则就将添加的值写入到该指针地址下的Data上,如果该节点有值则转到下一节点上直到找到空节点
-            if(Tree->Right != NULL) AddTree(Tree->Right, addData);
+            if(Tree->Right != NULL) searchTreeadd(Tree->Right, addData);
             else
             {
                 addTree = new TreeList;
@@ -156,13 +200,13 @@ void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData)
 }
 
 template<class T>
-void BinarySearchTree<T>::AddTree(TreeList *Tree, T addData[])
+void BinarySearchTree<T>::searchTreeadd(TreeList *Tree, T addData[])
 {
     int count = 0;
     while (addData[count] != 0)
     {
         T tmp = addData[count];
-        AddTree(Tree, tmp);
+        searchTreeadd(Tree, tmp);
     }
     
 }
