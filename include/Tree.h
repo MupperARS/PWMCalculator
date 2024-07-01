@@ -17,6 +17,7 @@ private:
     /* data */
     //声明根节点
     int count;
+    int errorCount;
 
     /**
     * 定义二叉树结构
@@ -50,6 +51,7 @@ template<class T>
 BinarySearchTree<T>::BinarySearchTree(T Data)
 {
     count = 1;
+    errorCount = 0;
     tree = (TreeList *) malloc(sizeof(TreeList));
     tree->Data = Data;
     tree->Left = nullptr;
@@ -179,7 +181,7 @@ void BinarySearchTree<T>::dropTree(TreeList *Tree, T dropData, TreeList *preTree
     if(Tree != NULL)
     {
         //判断节点数据与删除数据是否相同
-        if (Tree->Data = dropData)
+        if (Tree->Data == dropData)
         {
             if(preTree != NULL)
             {
