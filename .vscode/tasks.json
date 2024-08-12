@@ -3,10 +3,9 @@
     "windows": {
         "options": {
             "shell": {
-                "executable": "cmd",
+                "executable": "cmd.exe",
                 "args": [
-                    "/C",
-                    "VsDevCmd.bat",
+                    "\"D:/Program Files/Microsoft Visual Studio/2022/BuildTools/Common7/Tools/VsDevCmd.bat\"",
                     "&&"
                 ]
             }

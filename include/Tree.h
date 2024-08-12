@@ -41,14 +41,6 @@ private:
         sucessCount = 0
     }
 
-    void setfailCount()
-    {
-        failCount++;
-    }
-    void setfailCount()
-    {
-        sucessCount++;
-    }
     void searchTreeadd(TreeList *Tree, T addData);
     void searchTreeadd(TreeList *Tree, T addData[]);
 
@@ -73,7 +65,7 @@ BinarySearchTree<T>::BinarySearchTree(T Data)
 {
     count = 1;
     sucessCount = 0;
-    failCount = 0
+    failCount = 0;
     tree = (TreeList *) malloc(sizeof(TreeList));
     tree->Data = Data;
     tree->Left = nullptr;

@@ -81,7 +81,7 @@ void FindDatalenth()
     std::cin >> Findvalue;
     size_t len = searchTree.FindTreeNumber(searchTree.tree, Findvalue);
     std::cout << Findvalue << "在" << len << "中\n";
-    //system("pause");
+    system("pause");
 }
 
 /**
