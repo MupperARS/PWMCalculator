@@ -17,12 +17,8 @@ private:
     /* data */
     //声明根节点
     int count;
-<<<<<<< HEAD
-    int errorCount;
-=======
     int failCount;
     int sucessCount;
->>>>>>> 81230a40ccae21424af1ace11bc148fa2e2bb021
 
     /**
     * 定义二叉树结构
@@ -68,12 +64,7 @@ template<class T>
 BinarySearchTree<T>::BinarySearchTree(T Data)
 {
     count = 1;
-<<<<<<< HEAD
     errorCount = 0;
-=======
-    sucessCount = 0;
-    failCount = 0;
->>>>>>> 81230a40ccae21424af1ace11bc148fa2e2bb021
     tree = (TreeList *) malloc(sizeof(TreeList));
     tree->Data = Data;
     tree->Left = nullptr;
