@@ -5,6 +5,8 @@
         "qapplication": "cpp",
         "qmainwindow": "cpp",
         "qdesktopservices": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "qvboxlayout": "cpp",
+        "new": "cpp"
     }
 }
