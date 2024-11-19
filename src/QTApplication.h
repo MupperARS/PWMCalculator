@@ -1,20 +1,20 @@
 #pragma once
 #include "ui_QTApplication.h"
 #include <QMainWindow>
-#include <QException>
-#include <QProcess>
 
-class QTApplication : public QMainWindow, QException
+class QTApplication : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    QTApplication(QWidget *parent = nullptr);
+    explicit QTApplication(QWidget *parent = nullptr);
     ~QTApplication();
     
 
 private:
     Ui_QTApplication *ui;
+    QString expression;
 
 private slots:
+    void on_oneButton_clicked();
 };
