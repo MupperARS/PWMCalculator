@@ -5,16 +5,18 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
 {
     QFont f("仿宋", 26);
     QIcon icon("../static/calculator.ico");
+    QString buttonColor("");
 
     ui->setupUi(this);
 
+    this->setWindowIcon(icon);
     this->setWindowTitle("计算器");
     this->setMinimumSize(320, 500);
 
+    //setFont
     ui->mainLineEdit->setFont(f);
-
-    
-    this->setWindowIcon(icon);
+    //setButtonColor
+    ui->equalButton->setStyleSheet("background:#65A5D1");
 }
 
 QTApplication::~QTApplication()
