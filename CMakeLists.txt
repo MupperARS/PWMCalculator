@@ -11,13 +11,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 COMPONENTS Widgets REQUIRED) # Qt COMPONENTS
 find_package(Vulkan REQUIRED)
 
-# Bring the headers, such as Student.h into the project
-include_directories(${CMAKE_SOURCE_DIR}/include)
-include_directories(${CMAKE_SOURCE_DIR}/ui)
-
-get_property(INCLUDES DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
-message(">>> include_dirs=${INCLUDES}")
-
 # add_compile_options(-std=c++11 -Wall)
 set(CMAKE_BUILD_TYPE)
 
@@ -28,7 +21,7 @@ add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 # Can manually add the sources using the set command as follows:
 # set(SOURCES src/mainapp.cpp src/Student.cpp)
 # However, the file(GLOB...) allows for wildcard additions:
-file(GLOB SOURCES "src/*.cpp" ,${INCLUDE_DIRECTORIES})
+file(GLOB SOURCES "src/*.cpp")
 
 # set((EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build))
 add_executable(${PROJECT_NAME}
