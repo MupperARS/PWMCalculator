@@ -48,8 +48,8 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="0">
-      <widget class="QPushButton" name="NumberButton4">
+     <item row="1" column="2">
+      <widget class="QPushButton" name="multiplication">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -57,12 +57,12 @@
         </size>
        </property>
        <property name="text">
-        <string>4</string>
+        <string>X</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QPushButton" name="NumberButton8">
+     <item row="1" column="3">
+      <widget class="QPushButton" name="divide">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -70,25 +70,31 @@
         </size>
        </property>
        <property name="text">
-        <string>8</string>
+        <string>÷</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QPushButton" name="NumberButton5">
+     <item row="2" column="3" rowspan="2">
+      <widget class="QPushButton" name="equalButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>60</width>
-         <height>75</height>
+         <height>238</height>
         </size>
        </property>
        <property name="text">
-        <string>5</string>
+        <string>=</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="NumberButton7">
+     <item row="1" column="1">
+      <widget class="QPushButton" name="increase">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -96,59 +102,7 @@
         </size>
        </property>
        <property name="text">
-        <string>7</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QPushButton" name="twoButton">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>2</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QPushButton" name="NumberButton9">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>9</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="2">
-      <widget class="QPushButton" name="NumberButton3">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>3</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
-      <widget class="QPushButton" name="NumberButton6">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>6</string>
+        <string>+</string>
        </property>
       </widget>
      </item>
@@ -178,8 +132,8 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="Percent">
+     <item row="1" column="0">
+      <widget class="QPushButton" name="decrement">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -187,20 +141,7 @@
         </size>
        </property>
        <property name="text">
-        <string>%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="QPushButton" name="oneButton">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>1</string>
+        <string>-</string>
        </property>
       </widget>
      </item>
@@ -220,8 +161,8 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="3">
-      <widget class="QPushButton" name="divide">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="Percent">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -229,59 +170,7 @@
         </size>
        </property>
        <property name="text">
-        <string>÷</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="decrement">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>-</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="increase">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QPushButton" name="multiplication">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>X</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="3" rowspan="3">
-      <widget class="QPushButton" name="equalButton">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>238</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>=</string>
+        <string>%</string>
        </property>
       </widget>
      </item>

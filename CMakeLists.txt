@@ -25,7 +25,7 @@ file(GLOB SOURCES "src/*.cpp")
 
 # set((EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build))
 add_executable(${PROJECT_NAME}
-    WIN32 # If you need a terminal for debug, please comment this statement
+    #WIN32 # If you need a terminal for debug, please comment this statement
     ${SOURCES}
 )
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets) # Qt6 Shared Library
