@@ -7,13 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>500</height>
+    <height>485</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>320</width>
+    <height>485</height>
+   </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>320</width>
-    <height>500</height>
+    <height>485</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -44,38 +50,113 @@
       <x>0</x>
       <y>50</y>
       <width>320</width>
-      <height>405</height>
+      <height>400</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="2">
-      <widget class="QPushButton" name="multiplication">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="Clear">
        <property name="minimumSize">
         <size>
-         <width>60</width>
+         <width>75</width>
          <height>75</height>
         </size>
        </property>
-       <property name="text">
-        <string>X</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QPushButton" name="divide">
-       <property name="minimumSize">
+       <property name="maximumSize">
         <size>
-         <width>60</width>
+         <width>75</width>
          <height>75</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="text">
-        <string>÷</string>
+        <string>C</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="3" rowspan="2">
-      <widget class="QPushButton" name="equalButton">
+     <item row="0" column="2">
+      <widget class="QPushButton" name="Subtraction">
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>－</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="Addition">
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI Emoji</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>＋</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="Backspace">
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>18</pointsize>
+         <bold>false</bold>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>←</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QPushButton" name="EqualButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -84,93 +165,74 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>60</width>
-         <height>238</height>
+         <width>75</width>
+         <height>155</height>
         </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>155</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>18</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>=</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="increase">
+     <item row="1" column="3">
+      <widget class="QPushButton" name="Multiplication">
        <property name="minimumSize">
         <size>
-         <width>60</width>
+         <width>75</width>
          <height>75</height>
         </size>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
        <property name="text">
-        <string>+</string>
+        <string>×</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="NumberButtonCE">
+     <item row="2" column="3">
+      <widget class="QPushButton" name="Division">
        <property name="minimumSize">
         <size>
-         <width>60</width>
+         <width>75</width>
          <height>75</height>
         </size>
        </property>
-       <property name="text">
-        <string>CE</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="NumberButtonClear">
-       <property name="minimumSize">
+       <property name="maximumSize">
         <size>
-         <width>60</width>
+         <width>75</width>
          <height>75</height>
         </size>
        </property>
-       <property name="text">
-        <string>C</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="decrement">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>18</pointsize>
+        </font>
        </property>
        <property name="text">
-        <string>-</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="QPushButton" name="backspace">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset theme="QIcon::ThemeIcon::GoPrevious"/>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="Percent">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>75</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>%</string>
+        <string notr="true">÷</string>
        </property>
       </widget>
      </item>
