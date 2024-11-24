@@ -5,6 +5,7 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
 {
     int count = 0;
     QString buttonName[] = {"7", "8", "9", "4", "5", "6", "1", "2", "3", "±", "0", "."};
+    int value[] = {7, 8, 9, 4, 5, 6, 1, 2, 3, Point, 0, Negative};
     QSignalMapper *mapper = new QSignalMapper(this);
 
     ui->setupUi(this);
@@ -18,20 +19,20 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
     this->setWindowTitle("计算器");
     this->setMinimumSize(320, 500);
 
-    mapper->setMapping(ui->EqualButton, 10);
-    mapper->setMapping(ui->Addition, 11);
-    mapper->setMapping(ui->Subtraction, 12);
-    mapper->setMapping(ui->Multiplication, 13);
-    mapper->setMapping(ui->Division, 14);
-    mapper->setMapping(ui->Backspace, 15);
-    mapper->setMapping(ui->Clear, 16);
+    mapper->setMapping(ui->Addition, Addition);
+    mapper->setMapping(ui->Subtraction, Subtraction);
+    mapper->setMapping(ui->Multiplication, Multiplication);
+    mapper->setMapping(ui->Division, Division);
+    mapper->setMapping(ui->Backspace, Backspace);
+    mapper->setMapping(ui->EqualButton, EqualButton);
+    mapper->setMapping(ui->Clear, Clear);
 
-    connect(ui->EqualButton, SIGNAL(clicked()), mapper, SLOT(map()));
     connect(ui->Addition, SIGNAL(clicked()), mapper, SLOT(map()));
     connect(ui->Subtraction, SIGNAL(clicked()), mapper, SLOT(map()));
     connect(ui->Multiplication, SIGNAL(clicked()), mapper, SLOT(map()));
     connect(ui->Division, SIGNAL(clicked()), mapper, SLOT(map()));
     connect(ui->Backspace, SIGNAL(clicked()), mapper, SLOT(map()));
+    connect(ui->EqualButton, SIGNAL(clicked()), mapper, SLOT(map()));
     connect(ui->Clear, SIGNAL(clicked()), mapper, SLOT(map()));
 
     for (int i = 1; i < 5; i++)
@@ -44,13 +45,12 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
             numberButton[count]->setText(buttonName[count]);
 
             ui->gridLayout->addWidget(numberButton[count], i, j);
-            mapper->setMapping(numberButton[count], buttonName[count]);
+            mapper->setMapping(numberButton[count], value[count]);
             connect(numberButton[count], SIGNAL(clicked()), mapper, SLOT(map()));
             count++;
         }
     }
-    connect(mapper, SIGNAL(mappedString(const QString &)), this, SLOT(numberClicked(const QString &)));
-    connect(mapper, SIGNAL(mappedInt(int)), this, SLOT(ctrlClicked(int)));
+    connect(mapper, SIGNAL(mappedInt(int)), this, SLOT(onClicked(int)));
 }
 
 QTApplication::~QTApplication()
@@ -58,91 +58,74 @@ QTApplication::~QTApplication()
     delete ui;
 }
 
-double QTApplication::combine(double Compute, int dec)
+/**
+ * 点击事件 槽函数
+ * @param value 枚举或数字
+ */
+void QTApplication::onClicked(int value)
 {
-    result = Compute;
-    decimal = dec;
-    return result;
-}
-
-void QTApplication::numberClicked(const QString &text)
-{
-    int id = text.toInt();
-    switch (methood)
+    bool zero = ui->mainLineEdit->text().at(0).digitValue();
+    /**
+     * 判断数字框不为零
+     * 受控功能
+     */
+    if (zero)
     {
-    case 11:
-        decimal = 1;
-        combine(result + id * decimal, decimal * 10);
-        break;
-    case 12:
-        decimal = 1;
-        combine(result - id * decimal, decimal * 10);
-        break;
-    case 13:
-        decimal = 1;
-        result *= text.toInt(); // x
-        break;
-    case 14:
-        decimal = 1;
-        result /= text.toInt(); // ÷
-        break;
-    default:
-        int value = ui->mainLineEdit->text().at(0).digitValue();
-        result = value ? combine(id + result * decimal * 10, decimal * 10) : id;
-        expression = value ? expression + text : text;
-        break;
-    }
-    if (methood)
-    {
-        methoodCount--;
-        methood = 0;
-        expression.append(text);
-    }
-
-    ui->mainLineEdit->setText(expression);
-}
-
-void QTApplication::ctrlClicked(int value)
-{
-    if (!expression.back().digitValue())
-        return;
-    methood = value;
-    methoodCount++;
-    switch (value)
-    {
-    case 10:
-        expression.append("=" + QString::number(result)); //=
-        break;
-    case 11:
-        expression.append("+"); //+
-        break;
-    case 12:
-        expression.append("-"); //-
-        break;
-    case 13:
-        expression.append("x"); // x
-        break;
-    case 14:
-        expression.append("÷"); // ÷
-        break;
-    case 15:
-        // Backspace
-        if (expression.length() > 1)
+        switch (value)
         {
-            expression = expression.chopped(1);
+        case Addition:
+            /*加法*/
+            expression.append("+"); //=
+            break;
+        case Subtraction:
+            /* 减法 */
+            expression.append("-"); //+
+            break;
+        case Multiplication:
+            /* 乘法 */
+            expression.append("x"); //-
+            break;
+        case Division:
+            /* 除法 */
+            expression.append("÷"); // x
+            break;
+        case EqualButton:
+            /* 等于 */
+            expression.append("="); // x
             break;
         }
-        result = 0;
-        methood = 0;
-        expression = "0";
+        stack.push(value);
+    }
+
+    /**
+     * 非受控功能
+     */
+    switch (value)
+    {
+    case Point:
+        /* 点 */
+        expression.append("."); // x
         break;
-    case 16:
-        result = 0;
-        methood = 0;
-        decimal = 1;
+    case Negative:
+        /* 正负号 */
+        expression.append("±"); // x
+        break;
+    case Clear:
+        /* 清除 */
         expression = "0";
+    case Backspace:
+        /* 退格 */
+        
         break;
     }
 
-    ui->mainLineEdit->setText(expression);
+    /* 判断数字框为零 */
+    if (!zero)
+    {
+        stack.push(value);
+        expression = QString::number(value); // 将数字转字符赋值到expression上
+    }
+    expression.append(QString::number(value)); // 将数字转字符添加到expression字符串尾
+
+    ui->mainLineEdit->setText(expression); // 将expresssion写回到编辑组件中
 }

@@ -2,6 +2,7 @@
 #include "ui_QTApplication.h"
 #include <QMainWindow>
 #include <QSignalMapper>
+#include <Qstack.h>
 
 class QTApplication : public QMainWindow
 {
@@ -10,19 +11,27 @@ private:
     Ui_QTApplication *ui;
     QPushButton *numberButton[13];
     QString expression;
-    double result;
-    int decimal = 1;
-    int methood = 0;
-    int methoodCount = 0;
+    QStack<int> stack;
+
 
 public:
     explicit QTApplication(QWidget *parent = nullptr);
     ~QTApplication();
 
 private:
-    double combine(double Compute, int dec);
+    enum method
+    {
+        Addition = 11,
+        Subtraction,
+        Multiplication,
+        Division,
+        Backspace,
+        EqualButton,
+        Clear,
+        Point,
+        Negative
+    };
 
 private slots:
-    void ctrlClicked(int);
-    void numberClicked(const QString &);
+    void onClicked(int);
 };
