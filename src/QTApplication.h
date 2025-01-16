@@ -2,7 +2,6 @@
 #include "ui_QTApplication.h"
 #include <QMainWindow>
 #include <QSignalMapper>
-#include <Qstack.h>
 
 class QTApplication : public QMainWindow
 {
@@ -11,7 +10,6 @@ private:
     Ui_QTApplication *ui;
     QPushButton *numberButton[13];
     QString expression;
-    QStack<QString> stack;
 
 
 public:
