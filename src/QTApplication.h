@@ -19,7 +19,6 @@ public:
     ~QTApplication();
 
 private:
-    QString calculate();
 
 private slots:
     void onClicked(const QString &text);
