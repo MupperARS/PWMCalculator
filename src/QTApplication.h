@@ -11,7 +11,7 @@ private:
     Ui_QTApplication *ui;
     QPushButton *numberButton[13];
     QString expression;
-    QStack<int> stack;
+    QStack<QString> stack;
 
 
 public:
@@ -19,19 +19,8 @@ public:
     ~QTApplication();
 
 private:
-    enum method
-    {
-        Addition = 11,
-        Subtraction,
-        Multiplication,
-        Division,
-        Backspace,
-        EqualButton,
-        Clear,
-        Point,
-        Negative
-    };
+    QString calculate();
 
 private slots:
-    void onClicked(int);
+    void onClicked(const QString &text);
 };
