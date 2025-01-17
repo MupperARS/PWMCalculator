@@ -25,7 +25,19 @@
   <property name="windowTitle">
    <string>QTApplication</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>251</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout"/>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>

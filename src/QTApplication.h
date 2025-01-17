@@ -2,15 +2,21 @@
 #include "ui_QTApplication.h"
 #include <QMainWindow>
 #include <QSignalMapper>
+#include <QVBoxLayout>
+#include <QLineEdit>
+#include <QLabel>
 
 class QTApplication : public QMainWindow
 {
     Q_OBJECT
 private:
     Ui_QTApplication *ui;
-    QPushButton *numberButton[13];
-    QString expression;
-
+    QLabel *label[4];
+    QLineEdit *lineEdit[4];
+    uint16_t core;
+    uint16_t PWM;
+    uint16_t resetCount;
+    uint16_t pulse;
 
 public:
     explicit QTApplication(QWidget *parent = nullptr);
@@ -19,5 +25,5 @@ public:
 private:
 
 private slots:
-    void onClicked(const QString &text);
+    void onChange(int vlaue);
 };
