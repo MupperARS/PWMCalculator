@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
+#include <QComboBox>
 
 class QTApplication : public QMainWindow
 {
@@ -13,10 +14,12 @@ private:
     Ui_QTApplication *ui;
     QLabel *label[4];
     QLineEdit *lineEdit[4];
-    uint16_t core;
-    uint16_t PWM;
-    uint16_t resetCount;
-    uint16_t pulse;
+    QComboBox *comboBox;
+    uint16_t core;          //核心数
+    uint16_t PWM;           //pwm
+    uint16_t resetCount;    //计数
+    uint16_t Prescaler;     //预分频系数
+    uint16_t pulse;         //
 
 public:
     explicit QTApplication(QWidget *parent = nullptr);
