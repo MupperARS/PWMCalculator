@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9) # CMake install : https://cmake.org/download/
-project(QtApplication VERSION 1.0.0 LANGUAGES CXX)
+project(PWMcalculator VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_PREFIX_PATH "D:/Program Files/Qt/6.8.0/mingw_64") # Qt Kit Dir
 set(CMAKE_AUTOUIC ON)
@@ -37,9 +37,10 @@ install(TARGETS ${PROJECT_NAME}
 )
 
 include(InstallRequiredSystemLibraries)
+set(CPACK_SOURCE_GENERATOR "NSIS")
+set(CPACK_PACKAGE_VERSION ${CMAKE_VERSION})
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/static/License.txt")
 set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/static/calculator.ico")
 set(CPACK_PACKAGE_VERSION_MAJOR "${${PROJECT_NAME}_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${${PROJECT_NAME}_VERSION_MINOR}")
-set(CPACK_SOURCE_GENERATOR "NSIS")
 include(CPack)

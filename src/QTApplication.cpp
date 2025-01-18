@@ -8,10 +8,10 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
     ui->setupUi(this);
 
     this->setWindowIcon(QIcon("../static/calculator.ico"));
-    this->setWindowTitle("PWM计算器");
-    this->setMinimumSize(320, 500);
+    this->setWindowTitle("PWMcalculator");
+    this->setMinimumSize(360, 500);
 
-    QString name[] = {"核心频率(MHz):", "预分频系数:", "装载值:", "心跳值:"};
+    QString name[] = {"Core frequency(MHz):", "Precrossover factor:", "Overload value(0-65535):", "pulse:"};
     QStringList list = {"TIM_CLOCKDIVISION_DIV1", "TIM_CLOCKDIVISION_DIV2", "TIM_CLOCKDIVISION_DIV4"};
     QFont font;
 
@@ -19,8 +19,6 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
     {
         label[i] = new QLabel(name[i], this);
         lineEdit[i] = new QLineEdit(this);
-
-        
 
         if (i == 1)
         {
