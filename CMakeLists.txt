@@ -13,6 +13,7 @@ find_package(Vulkan REQUIRED)
 
 # add_compile_options(-std=c++11 -Wall)
 set(CMAKE_BUILD_TYPE)
+set(CMAKE_CXX_FLAGS "-mwindows")
 
 # Specify MSVC UTF-8 encoding
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
@@ -34,13 +35,14 @@ install(TARGETS ${PROJECT_NAME}
     ARCHIVE DESTINATION ${PROJECT_NAME}/lib
     RUNTIME DESTINATION ${PROJECT_NAME}/bin
     PUBLIC_HEADER DESTINATION ${PROJECT_NAME}/include
+    
 )
 
 include(InstallRequiredSystemLibraries)
 set(CPACK_SOURCE_GENERATOR "NSIS")
-set(CPACK_PACKAGE_VERSION ${CMAKE_VERSION})
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/static/License.txt")
-set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/static/calculator.ico")
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}//static//License.txt")
+set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\static\\\\calculator.ico")
 set(CPACK_PACKAGE_VERSION_MAJOR "${${PROJECT_NAME}_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${${PROJECT_NAME}_VERSION_MINOR}")
 include(CPack)
