@@ -13,36 +13,43 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
 
     QString name[] = {"核心频率(MHz):", "预分频系数:", "装载值:", "心跳值:"};
     QStringList list = {"TIM_CLOCKDIVISION_DIV1", "TIM_CLOCKDIVISION_DIV2", "TIM_CLOCKDIVISION_DIV4"};
+    QFont font;
 
     for (uint16_t i = 0; i < 4; i++)
     {
-        label[i] = new QLabel(this);
+        label[i] = new QLabel(name[i], this);
         lineEdit[i] = new QLineEdit(this);
-        label[i]->setText(name[i]);
-        label[i]->setMinimumSize(10, 15);
-        lineEdit[i]->setMinimumSize(200, 15);
-        ui->gridLayout->addWidget(label[i]);
-        ui->gridLayout->addWidget(lineEdit[i]);
+
+        
+
         if (i == 1)
         {
+            QHBoxLayout *hboxLaylout = new QHBoxLayout();
             comboBox = new QComboBox(this);
             comboBox->addItems(list);
-            ui->gridLayout->addWidget(comboBox);
+            hboxLaylout->addWidget(lineEdit[i], 1);
+            hboxLaylout->addWidget(comboBox);
+            ui->gridLayout->addWidget(label[i], i, 0);
+            ui->gridLayout->addLayout(hboxLaylout, i, 1);
+        }
+        else
+        {
+            ui->gridLayout->addWidget(label[i], i, 0);
+            ui->gridLayout->addWidget(lineEdit[i], i, 1);
         }
         mapper->setMapping(lineEdit[i], i);
         connect(lineEdit[i], SIGNAL(textChanged(const QString &)), mapper, SLOT(map()));
     }
     label[4] = new QLabel("PWM:", this);
+    label[4]->setMaximumHeight(20);
     label[5] = new QLabel("", this);
 
-    label[5]->setMinimumHeight(50);
     label[5]->setStyleSheet({"background-color: #FFF; border:1px solid black;"});
-    QFont font;
-    font.setPointSize(24);
+    font.setPointSize(16);
     label[5]->setFont(font);
 
-    ui->gridLayout->addWidget(label[4]);
-    ui->gridLayout->addWidget(label[5]);
+    ui->gridLayout->addWidget(label[4], 4, 0, 1, 2);
+    ui->gridLayout->addWidget(label[5], 5, 0, 1, 2);
 
     connect(mapper, SIGNAL(mappedInt(int)), this, SLOT(onChange(int)));
     connect(comboBox, SIGNAL(textActivated(const QString &)), this, SLOT(onComboChange(const QString &)));
