@@ -5,6 +5,9 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QComboBox>
+#include <QSlider>
+#include <QPushButton>
+#include <QClipboard>
 
 class QTApplication : public QMainWindow
 {
@@ -14,6 +17,8 @@ private:
     QLabel *label[6];
     QLineEdit *lineEdit[4];
     QComboBox *comboBox;
+    QSlider *slider;
+    QClipboard *clip;
     uint16_t core = 0U;          //核心数
     uint16_t PWM = 0U;           //pwm
     uint16_t resetCount = 0U;    //计数
@@ -30,4 +35,6 @@ private:
 private slots:
     void onChange(int vlaue);
     void onComboChange(const QString &text);
+    void changed(int vlaue);
+    void copy();
 };

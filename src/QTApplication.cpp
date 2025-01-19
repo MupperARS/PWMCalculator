@@ -11,27 +11,26 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
     this->setWindowTitle("PWMcalculator");
     this->setMinimumSize(360, 500);
 
-    QString name[] = {"Core frequency(MHz):", "Precrossover factor:", "Overload value(0-65535):", "pulse:"};
-    QStringList list = {"TIM_CLOCKDIVISION_DIV1", "TIM_CLOCKDIVISION_DIV2", "TIM_CLOCKDIVISION_DIV4"};
+    QString labelName[] = {"Core frequency(MHz):", "Precrossover factor:", "Overload value(0-65535):", "pulse:"};
     QFont font;
 
     for (uint16_t i = 0; i < 4; i++)
     {
-        label[i] = new QLabel(name[i], this);
+        label[i] = new QLabel(labelName[i], this);
         lineEdit[i] = new QLineEdit(this);
-
         if (i == 1)
         {
             QHBoxLayout *hboxLaylout = new QHBoxLayout();
             comboBox = new QComboBox(this);
-            comboBox->addItems(list);
-            hboxLaylout->addWidget(lineEdit[i], 1);
+            comboBox->addItems({"TIM_CLOCKDIVISION_DIV1", "TIM_CLOCKDIVISION_DIV2", "TIM_CLOCKDIVISION_DIV4"});
+            hboxLaylout->addWidget(lineEdit[i]);
             hboxLaylout->addWidget(comboBox);
             ui->gridLayout->addWidget(label[i], i, 0);
             ui->gridLayout->addLayout(hboxLaylout, i, 1);
         }
         else
         {
+            lineEdit[i]->setMaxLength(5);
             ui->gridLayout->addWidget(label[i], i, 0);
             ui->gridLayout->addWidget(lineEdit[i], i, 1);
         }
@@ -39,18 +38,19 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
         connect(lineEdit[i], SIGNAL(textChanged(const QString &)), mapper, SLOT(map()));
     }
     label[4] = new QLabel("PWM:", this);
+    QPushButton *copyButton = new QPushButton("copy", this);
+
     label[4]->setMaximumHeight(20);
-    label[5] = new QLabel("", this);
 
-    label[5]->setStyleSheet({"background-color: #FFF; border:1px solid black;"});
-    font.setPointSize(16);
-    label[5]->setFont(font);
+    slider = new QSlider(Qt::Horizontal, this);
 
-    ui->gridLayout->addWidget(label[4], 4, 0, 1, 2);
-    ui->gridLayout->addWidget(label[5], 5, 0, 1, 2);
-
+    ui->gridLayout->addWidget(slider, 4, 0, 1, 2);
+    ui->gridLayout->addWidget(label[4], 5, 0, 1, 2);
+    ui->gridLayout->addWidget(copyButton, 5, 1, 1, 1);
     connect(mapper, SIGNAL(mappedInt(int)), this, SLOT(onChange(int)));
     connect(comboBox, SIGNAL(textActivated(const QString &)), this, SLOT(onComboChange(const QString &)));
+    connect(slider, SIGNAL(valueChanged(int)), this, SLOT(changed(int)));
+    connect(copyButton, SIGNAL(clicked()), this, SLOT(copy()));
 }
 /**
  * @brief 析构函数
@@ -67,10 +67,10 @@ void QTApplication::calculator()
         PWM = core / (Prescaler * resetCount);
         if (PWM != 0)
         {
-            label[5]->setText(QString::number(PWM));
+            label[4]->setText("PWM:" + QString::number(PWM) + "hz");
             return;
         }
-        label[5]->setText("");
+        label[4]->setText("PWM:");
     }
 }
 
@@ -85,6 +85,17 @@ void QTApplication::onComboChange(const QString &text)
     Prescaler = text.back().digitValue();
     lineEdit[1]->blockSignals(false);
     calculator();
+}
+
+void QTApplication::changed(int vlaue)
+{
+    
+}
+
+void QTApplication::copy()
+{
+    clip = QApplication::clipboard();
+    clip->setText(QString::number(PWM));
 }
 
 /**
