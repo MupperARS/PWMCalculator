@@ -14,8 +14,8 @@ class QTApplication : public QMainWindow
     Q_OBJECT
 private:
     Ui_QTApplication *ui;
-    QLabel *label[6];
-    QLineEdit *lineEdit[4];
+    QLabel *label[5];
+    QLineEdit *lineEdit[3];
     QComboBox *comboBox;
     QSlider *slider;
     QClipboard *clip;

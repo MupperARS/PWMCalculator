@@ -14,7 +14,7 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
     QString labelName[] = {"Core frequency(MHz):", "Precrossover factor:", "Overload value(0-65535):", "pulse:"};
     QFont font;
 
-    for (uint16_t i = 0; i < 4; i++)
+    for (uint16_t i = 0; i < 3; i++)
     {
         label[i] = new QLabel(labelName[i], this);
         lineEdit[i] = new QLineEdit(this);
@@ -23,10 +23,11 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
             QHBoxLayout *hboxLaylout = new QHBoxLayout();
             comboBox = new QComboBox(this);
             comboBox->addItems({"TIM_CLOCKDIVISION_DIV1", "TIM_CLOCKDIVISION_DIV2", "TIM_CLOCKDIVISION_DIV4"});
+            comboBox->setMaximumWidth(40);
             hboxLaylout->addWidget(lineEdit[i]);
             hboxLaylout->addWidget(comboBox);
-            ui->gridLayout->addWidget(label[i], i, 0);
-            ui->gridLayout->addLayout(hboxLaylout, i, 1);
+            ui->gridLayout->addWidget(label[i], i, 0, 1, 2);
+            ui->gridLayout->addLayout(hboxLaylout, i, 1, 1, 1);
         }
         else
         {
@@ -37,16 +38,20 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
         mapper->setMapping(lineEdit[i], i);
         connect(lineEdit[i], SIGNAL(textChanged(const QString &)), mapper, SLOT(map()));
     }
-    label[4] = new QLabel("PWM:", this);
+
     QPushButton *copyButton = new QPushButton("copy", this);
-
-    label[4]->setMaximumHeight(20);
-
+    label[3] = new QLabel(labelName[3], this);
+    label[4] = new QLabel("PWM:", this);
     slider = new QSlider(Qt::Horizontal, this);
 
-    ui->gridLayout->addWidget(slider, 4, 0, 1, 2);
+    label[3]->setMaximumHeight(20);
+    label[4]->setMaximumHeight(20);
+
+    ui->gridLayout->addWidget(label[3], 3, 0);
+    ui->gridLayout->addWidget(slider, 3, 1, 1, 1);
     ui->gridLayout->addWidget(label[4], 5, 0, 1, 2);
     ui->gridLayout->addWidget(copyButton, 5, 1, 1, 1);
+
     connect(mapper, SIGNAL(mappedInt(int)), this, SLOT(onChange(int)));
     connect(comboBox, SIGNAL(textActivated(const QString &)), this, SLOT(onComboChange(const QString &)));
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(changed(int)));
@@ -70,7 +75,7 @@ void QTApplication::calculator()
             label[4]->setText("PWM:" + QString::number(PWM) + "hz");
             return;
         }
-        label[4]->setText("PWM:无值");
+        label[4]->setText("PWM: No value");
     }
 }
 
@@ -94,7 +99,8 @@ void QTApplication::changed(int vlaue)
 void QTApplication::copy()
 {
     clip = QApplication::clipboard();
-    if (PWM != 0) clip->setText(QString::number(PWM));
+    if (PWM != 0)
+        clip->setText(QString::number(PWM));
 }
 
 /**

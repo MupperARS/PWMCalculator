@@ -26,13 +26,16 @@
    <string>QTApplication</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>90</y>
+      <y>170</y>
       <width>321</width>
-      <height>351</height>
+      <height>271</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout"/>
