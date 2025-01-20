@@ -9,6 +9,9 @@
 
 ### Alpha
 
+### Highlights
+the program all use QT6.8, 
+
 ---
 ## How to Start
 
@@ -18,14 +21,15 @@ download the `PWMcalculator.exe` on your computer
 
 ### Second
 
-check on your Download Files, search the <font color = "red">PWMcalculator.exe</font>
-click <font color = "red">PWMcalculator.exe</font> install you system
+<p>check on your Download Files, search the <font color = "red">PWMcalculator.exe</font></p>
 
 ### Last
+click <font color = "red">PWMcalculator.exe</font> install you system
 
 ---
 ## File tree
 
+```
 QtApplication
 ├─.gitignore
 ├─ .vscode
@@ -38,7 +42,7 @@ QtApplication
    ├─ QTApplication.cpp
    ├─ QTApplication.h
    └─ QTApplication.ui
-
+```
 ---
 ## Future
 
