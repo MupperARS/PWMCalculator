@@ -70,7 +70,7 @@ void QTApplication::calculator()
             label[4]->setText("PWM:" + QString::number(PWM) + "hz");
             return;
         }
-        label[4]->setText("PWM:");
+        label[4]->setText("PWM:无值");
     }
 }
 
@@ -89,13 +89,12 @@ void QTApplication::onComboChange(const QString &text)
 
 void QTApplication::changed(int vlaue)
 {
-    
 }
 
 void QTApplication::copy()
 {
     clip = QApplication::clipboard();
-    clip->setText(QString::number(PWM));
+    if (PWM != 0) clip->setText(QString::number(PWM));
 }
 
 /**
@@ -104,6 +103,7 @@ void QTApplication::copy()
  */
 void QTApplication::onChange(int vlaue)
 {
+    int number;
     switch (vlaue)
     {
     case 0:
@@ -113,11 +113,19 @@ void QTApplication::onChange(int vlaue)
     case 1:
         /* PWM分频 */
         Prescaler = lineEdit[1]->text().toUInt();
-
         break;
     case 2:
         /* 装载值 */
-        resetCount = lineEdit[2]->text().toUInt();
+        number = lineEdit[2]->text().toUInt();
+        if (number > 65535)
+        {
+            resetCount = 65535;
+            lineEdit[2]->blockSignals(true);
+            lineEdit[2]->setText("65535");
+            lineEdit[2]->blockSignals(false);
+            break;
+        }
+        resetCount = number;
         break;
     case 3:
         /* 心跳值 */
