@@ -11,7 +11,7 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
     this->setWindowTitle("PWMcalculator");
     this->setMinimumSize(360, 500);
 
-    QString labelName[] = {"Core frequency(MHz):", "Precrossover factor:", "Overload value(0-65535):", "pulse:"};
+    QString labelName[] = {"Core frequency(MHz):", "Precrossover factor:", "Overload value(0-65535):", "pulse: 0%"};
     QFont font;
 
     for (uint16_t i = 0; i < 3; i++)
@@ -94,6 +94,7 @@ void QTApplication::onComboChange(const QString &text)
 
 void QTApplication::changed(int vlaue)
 {
+    label[3]->setText("pulse: " + QString::number(vlaue) + "%");
 }
 
 void QTApplication::copy()
@@ -132,10 +133,6 @@ void QTApplication::onChange(int vlaue)
             break;
         }
         resetCount = number;
-        break;
-    case 3:
-        /* 心跳值 */
-        pulse = lineEdit[3]->text().toUInt();
         break;
     default:
         break;

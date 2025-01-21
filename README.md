@@ -7,10 +7,17 @@
 
 ### Release
 
+
+
 ### Alpha
 
+This version simply includes pages and methods without optimization or iteration. 
+Compared to the release, there are a large number of bugs and style issues.
+
 ### Highlights
-the program all use QT6.8, 
+
+the program all use QT6.8
+The slot method uses a mapper class to aggregate input signals from multiple edit boxes and reduce multiple methods.
 
 ---
 ## How to Start
