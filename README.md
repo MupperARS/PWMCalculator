@@ -1,5 +1,5 @@
 
-<center><img src="./static/image.png"></center>
+<center><img src="https://www.freeimg.cn/i/2025/01/21/678f15b8a86ad.webp"></center>
 
 # PWMcalculator
 
