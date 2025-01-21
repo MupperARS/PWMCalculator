@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9) # CMake install : https://cmake.org/download/
-project(QTApplication LANGUAGES CXX)
+project(PWMcalculator VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_PREFIX_PATH "D:/Program Files/Qt/6.8.0/mingw_64") # Qt Kit Dir
 set(CMAKE_AUTOUIC ON)
@@ -13,6 +13,7 @@ find_package(Vulkan REQUIRED)
 
 # add_compile_options(-std=c++11 -Wall)
 set(CMAKE_BUILD_TYPE)
+#set(CMAKE_CXX_FLAGS "-mwindows")
 
 # Specify MSVC UTF-8 encoding
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
@@ -34,13 +35,13 @@ install(TARGETS ${PROJECT_NAME}
     ARCHIVE DESTINATION ${PROJECT_NAME}/lib
     RUNTIME DESTINATION ${PROJECT_NAME}/bin
     PUBLIC_HEADER DESTINATION ${PROJECT_NAME}/include
+    
 )
 
 include(InstallRequiredSystemLibraries)
-set(CPACK_RESOURCE_FILE_LICENSE
-    "${CMAKE_CURRENT_SOURCE_DIR}/static/License.txt")
-set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/static/calculator.ico")
+set(CPACK_SOURCE_GENERATOR "NSIS")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/static\\\\calculator.ico")
 set(CPACK_PACKAGE_VERSION_MAJOR "${${PROJECT_NAME}_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${${PROJECT_NAME}_VERSION_MINOR}")
-set(CPACK_SOURCE_GENERATOR "NSIS")
 include(CPack)

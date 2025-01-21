@@ -5,6 +5,7 @@
         "*.sqlbook": "sql",
         "*.ndjson": "jsonl",
         "*.dbclient-js": "javascript",
+        "LICENSE": "bat",
         "qapplication": "cpp",
         "qmainwindow": "cpp",
         "qdesktopservices": "cpp",
@@ -88,6 +89,9 @@
         "version": "cpp",
         "qsignalmapper": "cpp",
         "qlineedit": "cpp",
-        "qlabel": "cpp"
+        "qlabel": "cpp",
+        "qcombobox": "cpp",
+        "qslider": "cpp",
+        "qpushbutton": "cpp"
     },
 }
