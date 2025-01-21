@@ -1,13 +1,14 @@
 
-
+<center><img src="./static/image.png"></center>
 
 # PWMcalculator
+
 ---
 ## <font color = "#2EC">Welcome to my little program</font>
 
 ### Release
 
-
+The program has no serious bugs in the production environment
 
 ### Alpha
 
