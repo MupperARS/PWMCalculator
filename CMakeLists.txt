@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.9) # CMake install : https://cmake.org/download/
+cmake_minimum_required(VERSION 3.10) # CMake install : https://cmake.org/download/
 project(PWMcalculator VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_PREFIX_PATH "D:/Program Files/Qt/6.8.0/mingw_64") # Qt Kit Dir
+set(CMAKE_PREFIX_PATH "D:/Program Files/Qt/6.8.2/mingw_64") # Qt Kit Dir
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
