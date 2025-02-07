@@ -38,6 +38,10 @@ install(TARGETS ${PROJECT_NAME}
     
 )
 
+if(BUILD_TESTING)
+include(CTest)
+endif()
+
 include(InstallRequiredSystemLibraries)
 set(CPACK_SOURCE_GENERATOR "NSIS")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")

@@ -56,6 +56,7 @@ QTApplication::QTApplication(QWidget *parent) : QMainWindow(parent), ui(new Ui_Q
     connect(comboBox, SIGNAL(textActivated(const QString &)), this, SLOT(onComboChange(const QString &)));
     connect(slider, SIGNAL(valueChanged(int)), this, SLOT(changed(int)));
     connect(copyButton, SIGNAL(clicked()), this, SLOT(copy()));
+
 }
 /**
  * @brief 析构函数
